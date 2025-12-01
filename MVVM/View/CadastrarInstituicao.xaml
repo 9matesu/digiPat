@@ -1,0 +1,42 @@
+﻿<Window x:Class="patrimonio_digital.MVVM.View.CadastrarInstituicao"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:patrimonio_digital.MVVM.View"
+        xmlns:vm="clr-namespace:patrimonio_digital.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Title="CadastrarInstituicao" Height="350" Width="350" WindowStartupLocation="CenterScreen" FontFamily="{StaticResource Inter}" Icon="/digipat.ico">
+    <Grid>
+
+        <Border Background="{StaticResource WindowBackgroundBrush}" CornerRadius="0" Padding="0" Margin="0">
+
+            <StackPanel HorizontalAlignment="Center" Width="Auto" VerticalAlignment="Center" Margin="10">
+
+
+
+                <TextBlock Text="Bem-vindo!" FontSize="18" Foreground="{DynamicResource ForegroundBrush}" Margin="10 10 10 15" FontWeight="Bold" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Text="Para prosseguirmos, cadastre sua instituição" FontSize="12" Foreground="{DynamicResource ForegroundBrush}" Margin="10 0 0 25" FontWeight="Regular" HorizontalAlignment="Center"></TextBlock>
+
+                <TextBox x:Name="txtInst"
+                     Height="30"
+                     Margin="0,0,0,10"
+                     Width="280"
+                     Style="{StaticResource TextBoxTheme}"
+                     Text="{Binding NomeInstituicao, UpdateSourceTrigger=PropertyChanged}" 
+                     Tag="Instituição"/>
+
+                <Button Content="Concluir"
+                    Width="100"
+                    Height="30"
+                    HorizontalAlignment="Center"
+                    Command="{Binding CadastrarInstituicaoCommand}"
+                    IsDefault="True"
+                    Margin="25"
+                    Cursor="Hand"
+                    Style="{StaticResource EditorButtonTheme}" />
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>

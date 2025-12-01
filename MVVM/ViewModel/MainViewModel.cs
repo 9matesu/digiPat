@@ -15,6 +15,16 @@ namespace patrimonio_digital.MVVM.ViewModel
     {
         public AuditoriaViewModel AuditoriaVM { get; }
 
+
+        private string instituicao;
+        public string Instituicao
+        {
+            get => instituicao;
+            set { instituicao = value; OnPropertyChanged(); }
+        }
+
+
+
         private Usuario _usuarioLogado;
         public Usuario UsuarioLogadoBool
         {

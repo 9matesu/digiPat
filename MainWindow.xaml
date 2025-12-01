@@ -87,7 +87,9 @@
 			<Border Grid.Column="0" Background="{DynamicResource SidebarBackgroundBrush}">
 
 				<StackPanel DockPanel.Dock="Top">
-					<StackPanel Margin="10" Orientation="Horizontal">
+					<StackPanel Margin="0" Orientation="Vertical" Background="{DynamicResource WindowBackgroundBrush}">
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 						<Path Data="M6.69 2a1.75 1.75 0 00-1.75 1.756L5 21.253a.75.75 0 001.219.583L12 17.21l5.782 4.625A.75.75 0 0019 21.25V3.75A1.75 1.75 0 0017.25 2H6.69z"
                              Fill="{DynamicResource ForegroundBrush}"
                              Stretch="Uniform"
@@ -95,9 +97,13 @@
                              Height="50"
                              Margin="10"/>
 						<TextBlock Text="digiPat" FontSize="38" Foreground="{DynamicResource ForegroundBrush}" Margin="10" FontWeight="Bold" HorizontalAlignment="Center" />
-					</StackPanel>
+                        </StackPanel>
 
-					<StackPanel Margin="0 20 0 0" Cursor="Hand">
+                        <TextBlock Text="{Binding Instituicao}" FontSize="15" Foreground="{DynamicResource ForegroundBrush}" Margin="10" FontWeight="Regular" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                    </StackPanel>
+
+					<StackPanel Margin="0 0 0 0" Cursor="Hand">
 
 						<StackPanel Orientation="Horizontal" Style="{DynamicResource StackPanelSidebar}">
 							<Path Data="M8.56078 20.2501L20.5608 8.25011L15.7501 3.43945L3.75012 15.4395V20.2501H8.56078ZM15.7501 5.56077L18.4395 8.25011L16.5001 10.1895L13.8108 7.50013L15.7501 5.56077ZM12.7501 8.56079L15.4395 11.2501L7.93946 18.7501H5.25012L5.25012 16.0608L12.7501 8.56079Z"
@@ -143,6 +149,23 @@
 										 Style="{DynamicResource MenuButtonTheme}"
 										 />
 						</StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Style="{DynamicResource StackPanelSidebar}"  Visibility="{Binding PodeAuditoria, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <Path Data="M15 10.5C15 12.9853 12.9853 15 10.5 15C8.01472 15 6 12.9853 6 10.5C6 8.01472 8.01472 6 10.5 6C12.9853 6 15 8.01472 15 10.5ZM14.1793 15.2399C13.1632 16.0297 11.8865 16.5 10.5 16.5C7.18629 16.5 4.5 13.8137 4.5 10.5C4.5 7.18629 7.18629 4.5 10.5 4.5C13.8137 4.5 16.5 7.18629 16.5 10.5C16.5 11.8865 16.0297 13.1632 15.2399 14.1792L20.0304 18.9697L18.9697 20.0303L14.1793 15.2399Z"
+                                  Fill="{DynamicResource ForegroundBrush}"
+                                  Stretch="Uniform"
+                                  Width="15"
+                                  Height="15"
+                                  Margin="10 0 0 0"/>
+                            <RadioButton x:Name="btnExportarTudo"
+							 Command="{Binding AbrirJanelaCommand}"
+							 CommandParameter="Exportar"
+							 Content="Exportar"
+							 Height="50"
+							 FontSize="14"
+							 Style="{DynamicResource MenuButtonTheme}"
+							 />
+                        </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Style="{DynamicResource StackPanelSidebar}">
                             <Path Data="M10.0512 15.75L9.51642 14.2768L9.18821 14.0137C8.15637 13.1865 7.5 11.9204 7.5 10.5C7.5 8.01472 9.51472 6 12 6C14.4853 6 16.5 8.01472 16.5 10.5C16.5 11.9204 15.8436 13.1865 14.8118 14.0137L14.4836 14.2768L13.9488 15.75H10.0512ZM9 17.25H15L15.75 15.184C17.1217 14.0844 18 12.3948 18 10.5C18 7.18629 15.3137 4.5 12 4.5C8.68629 4.5 6 7.18629 6 10.5C6 12.3948 6.87831 14.0844 8.25 15.184L9 17.25ZM14.25 19.5V18H9.75V19.5H14.25Z"
@@ -252,7 +275,25 @@
                                                       Margin="10" />
                                             </Button>
 
-										</StackPanel>
+                                            <Button
+                                                    Command="{Binding DataContext.EditarItemCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}"
+                                                    Foreground="{DynamicResource SecondaryForegroundBrush}"
+                                                    Visibility="{Binding DataContext.PodeCatalogar, RelativeSource={RelativeSource AncestorType=ItemsControl}, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                    Style="{DynamicResource IconButton}"
+                                                    Cursor="Hand">
+                                            
+                                                <Path Data="M8.56078 20.2501L20.5608 8.25011L15.7501 3.43945L3.75012 15.4395V20.2501H8.56078ZM15.7501 5.56077L18.4395 8.25011L16.5001 10.1895L13.8108 7.50013L15.7501 5.56077ZM12.7501 8.56079L15.4395 11.2501L7.93946 18.7501H5.25012L5.25012 16.0608L12.7501 8.56079Z"
+                                                      Fill="{DynamicResource ForegroundBrush}"
+                                                      Stretch="Uniform"
+                                                      Width="15"
+                                                      Height="15"
+                                                      Margin="10" />
+                                            </Button>
+
+
+
+                                        </StackPanel>
 
 									</Grid>
 								</Border>

@@ -11,14 +11,34 @@ namespace patrimonio_digital
 {
     public partial class MainWindow : Window
     {
+        private MainViewModel mainVM;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            // Crie (ou recupere) um Usuario válido — exemplo rápido:
+            var usuario = new Usuario
+            {
+                Id = 1,
+                Nome = "Diego" // ajuste conforme sua classe Usuario
+            };
+
+            // passe a string necessária (pode ser "" se não tiver valor agora)
+            mainVM = new MainViewModel(usuario, string.Empty);
+
+            DataContext = mainVM;
+
+            // abra o cadastro passando a mesma mainVM
+            var cadastro = new CadastrarInstituicao(mainVM);
+            cadastro.ShowDialog();
+
+
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.Loaded += MainWindow_Loaded;
             this.Closing += MainWindow_Closing;
         }
+
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
