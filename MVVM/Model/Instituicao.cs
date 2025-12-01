@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace patrimonio_digital.MVVM.Model
 {
-    internal class Instituicao
+    public class Instituicao
     {
-        public string NomeInstituicao { get; set; }
+        public string Nome { get; set; }
 
     }
 }

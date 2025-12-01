@@ -22,6 +22,7 @@
 		<TextBox Height="28"
                  Margin="0,0,0,10"
                  Width="250"
+                 Tag="Usuário"
                  Style="{DynamicResource TextBoxTheme}"
                  Text="{Binding Nome, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
 

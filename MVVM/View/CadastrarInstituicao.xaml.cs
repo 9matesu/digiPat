@@ -1,6 +1,7 @@
 ﻿using patrimonio_digital.MVVM.ViewModel;
 using patrimonio_digital.MVVM.Model;
 using patrimonio_digital.MVVM.View;
+using patrimonio_digital.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,10 +23,30 @@ namespace patrimonio_digital.MVVM.View
     /// </summary>
     public partial class CadastrarInstituicao : Window
     {
-        public CadastrarInstituicao(MainViewModel mainVM)
+        public CadastrarInstituicao()
         {
             InitializeComponent();
-            DataContext = new CadastrarInstituicaoViewModel(mainVM);
+            DataContext = new CadastrarInstituicaoViewModel();
+        }
+
+        private void BtnConcluir_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNome.Text))
+            {
+                MessageBox.Show("Digite um nome válido.");
+                return;
+            }
+
+
+            if (this.DataContext is MainViewModel vm)
+            {
+                vm.Instituicao = txtNome.Text;
+                ItemStorage.SalvarInstituicao(vm.Instituicao);
+            }
+            this.Close();
+        }
+
+            
         }
     }
-}
+

@@ -36,7 +36,7 @@ namespace patrimonio_digital.MVVM.ViewModel
 
             string pastaBase = Path.Combine(
                 System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop),
-                "Patrimonio Digital",
+                "digiPat",
                 "Documentos",
                 item.Nome ?? "ItemSemNome"
             );

@@ -13,17 +13,22 @@ namespace patrimonio_digital.MVVM.ViewModel
 {
     public class MainViewModel : ObservableObject
     {
-        public AuditoriaViewModel AuditoriaVM { get; }
-
 
         private string instituicao;
         public string Instituicao
         {
             get => instituicao;
-            set { instituicao = value; OnPropertyChanged(); }
+            set
+            {
+                if (instituicao != value)
+                {
+                    instituicao = value;
+                    OnPropertyChanged(); // garante que a UI atualize
+                }
+            }
         }
 
-
+        public AuditoriaViewModel AuditoriaVM { get; }
 
         private Usuario _usuarioLogado;
         public Usuario UsuarioLogadoBool
@@ -106,6 +111,7 @@ namespace patrimonio_digital.MVVM.ViewModel
             LogoutCommand = new RelayCommand(_ => Logout(null));
             ExcluirItemCommand = new RelayCommand(ExcluirItem);
 
+            Instituicao = ItemStorage.CarregarInstituicao();
             Itens = ItemStorage.Carregar();
             ItensView = CollectionViewSource.GetDefaultView(Itens);
             ItensView.Filter = FiltrarItens;
@@ -235,5 +241,6 @@ namespace patrimonio_digital.MVVM.ViewModel
             ItemStorage.Salvar(Itens);
             AuditoriaVM.SalvarAuditoria();
         }
+
     }
 }

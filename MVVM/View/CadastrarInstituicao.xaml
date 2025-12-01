@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:patrimonio_digital.MVVM.View"
         xmlns:vm="clr-namespace:patrimonio_digital.MVVM.ViewModel"
         mc:Ignorable="d"
-        Title="CadastrarInstituicao" Height="350" Width="350" WindowStartupLocation="CenterScreen" FontFamily="{StaticResource Inter}" Icon="/digipat.ico">
+        Title="Cadastrar Instituição" Height="280" Width="350" WindowStartupLocation="CenterScreen" FontFamily="{StaticResource Inter}" Icon="/digipat.ico">
     <Grid>
 
         <Border Background="{StaticResource WindowBackgroundBrush}" CornerRadius="0" Padding="0" Margin="0">
@@ -15,12 +15,12 @@
 
 
 
-                <TextBlock Text="Bem-vindo!" FontSize="18" Foreground="{DynamicResource ForegroundBrush}" Margin="10 10 10 15" FontWeight="Bold" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Text="Para prosseguirmos, cadastre sua instituição" FontSize="12" Foreground="{DynamicResource ForegroundBrush}" Margin="10 0 0 25" FontWeight="Regular" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Text="Bem-vindo ao digiPat!" FontSize="18" Foreground="{DynamicResource ForegroundBrush}" Margin="10 10 10 15" FontWeight="Bold" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Text="Para prosseguirmos, cadastre sua instituição." FontSize="12" Foreground="{DynamicResource ForegroundBrush}" Margin="10 0 0 25" FontWeight="Regular" HorizontalAlignment="Center"></TextBlock>
 
-                <TextBox x:Name="txtInst"
+                <TextBox x:Name="txtNome"
                      Height="30"
-                     Margin="0,0,0,10"
+                     Margin="0,10,0,10"
                      Width="280"
                      Style="{StaticResource TextBoxTheme}"
                      Text="{Binding NomeInstituicao, UpdateSourceTrigger=PropertyChanged}" 
@@ -30,10 +30,10 @@
                     Width="100"
                     Height="30"
                     HorizontalAlignment="Center"
-                    Command="{Binding CadastrarInstituicaoCommand}"
                     IsDefault="True"
-                    Margin="25"
+                    Margin="20"
                     Cursor="Hand"
+                    Click="BtnConcluir_Click"
                     Style="{StaticResource EditorButtonTheme}" />
             </StackPanel>
         </Border>
