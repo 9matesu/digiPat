@@ -10,6 +10,7 @@ namespace patrimonio_digital.MVVM.View
         public Login()
         {
             InitializeComponent();
+
             DataContext = new LoginViewModel(this);
         }
 

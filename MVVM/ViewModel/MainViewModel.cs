@@ -1,12 +1,10 @@
 ﻿using patrimonio_digital.Core;
 using patrimonio_digital.MVVM.Model;
 using patrimonio_digital.MVVM.View;
-using patrimonio_digital.Services;
 using patrimonio_digital.Utils;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -15,8 +13,8 @@ namespace patrimonio_digital.MVVM.ViewModel
 {
     public class MainViewModel : ObservableObject
     {
+        public AuditoriaViewModel AuditoriaVM { get; }
 
-        // objeto usuário que é passado para validar a visualização de funções na interface
         private Usuario _usuarioLogado;
         public Usuario UsuarioLogadoBool
         {
@@ -48,16 +46,14 @@ namespace patrimonio_digital.MVVM.ViewModel
         public bool PodeEditar => UsuarioLogadoBool != null &&
             UsuarioLogadoBool.Tipo != TipoUsuario.Visitante;
 
-        // declaração de interfaces de comando
         public ICommand LogoutCommand { get; }
         public ICommand AbrirJanelaCommand { get; }
         public ICommand FecharJanelaCommand { get; }
-        public ICommand ExcluirItemCommand { get; }
         public ICommand AbrirEditorCommand { get; }
         public ICommand EditarItemCommand { get; }
+        public ICommand ExcluirItemCommand { get; }
 
 
-        // texto da pesquisa
         private string textoPesquisa;
         public string TextoPesquisa
         {
@@ -73,12 +69,9 @@ namespace patrimonio_digital.MVVM.ViewModel
             }
         }
 
-        // lista de itens registrados
         public ObservableCollection<Item> Itens { get; }
         public ICollectionView ItensView { get; }
 
-        // cria a string usuarioLogado que receberá o parâmetro passado pelo login (no caso, o nome do usuário logado) 
-        // a string que recebe o parâmetro é privada
         private string usuarioLogado;
         public string UsuarioLogado
         {
@@ -90,36 +83,28 @@ namespace patrimonio_digital.MVVM.ViewModel
             }
         }
 
-        // também carrega o ViewModel sem parâmetros
-        // public MainViewModel() : this("") { } 
-
         public MainViewModel(Usuario usuario, string nomeUsuario)
         {
-            UsuarioLogado = nomeUsuario; // recebe o nome do usuário para display
-            UsuarioLogadoBool = usuario; // recebe o usuário para as permissões
+            UsuarioLogado = nomeUsuario;
+            UsuarioLogadoBool = usuario;
+            AuditoriaVM = new AuditoriaViewModel();
 
-            // construtores de comando
             AbrirJanelaCommand = new RelayCommand(AbrirJanela);
-            ExcluirItemCommand = new RelayCommand(ExcluirItem);
             AbrirEditorCommand = new RelayCommand(AbrirEditor);
             EditarItemCommand = new RelayCommand(EditarItem);
             FecharJanelaCommand = new RelayCommand(FecharJanela);
-            LogoutCommand = new RelayCommand(Logout);
+            LogoutCommand = new RelayCommand(_ => Logout(null));
+            ExcluirItemCommand = new RelayCommand(ExcluirItem);
 
-
-            // carrega do armazenamento permanente ao instanciar a tela principal
             Itens = ItemStorage.Carregar();
             ItensView = CollectionViewSource.GetDefaultView(Itens);
             ItensView.Filter = FiltrarItens;
         }
 
-        // algoritmo de filtragem
         private bool FiltrarItens(object obj)
         {
             if (obj is not Item item) return false;
-
-            if (string.IsNullOrWhiteSpace(TextoPesquisa))
-                return true;
+            if (string.IsNullOrWhiteSpace(TextoPesquisa)) return true;
 
             string termo = TextoPesquisa.Trim().ToLower();
 
@@ -136,35 +121,23 @@ namespace patrimonio_digital.MVVM.ViewModel
         {
             if (parameter is string tipoJanela)
             {
-                if (tipoJanela == "Usuarios" && !PodeGerenciarUsuarios)
-                {
-                    MessageBox.Show("Acesso negado: você não tem permissão para gerenciar usuários.");
-                    return;
-                }
-
-                if (tipoJanela == "Auditoria" && !PodeAuditoria)
-                {
-                    MessageBox.Show("Acesso negado: você não tem permissão para acessar Auditoria.");
-                    return;
-                }
+                if (tipoJanela == "Usuarios" && !PodeGerenciarUsuarios) return;
+                if (tipoJanela == "Auditoria" && !PodeAuditoria) return;
 
                 Window janela = tipoJanela switch
                 {
-                    "Catalogar" when PodeCatalogar => new CatalogarItemWindow { DataContext = new CatalogarItemViewModel(Itens, UsuarioLogado) },
-                    "Auditoria" when PodeAuditoria => new Auditoria { DataContext = new AuditoriaViewModel() },
+                    "Catalogar" when PodeCatalogar => new CatalogarItemWindow
+                    {
+                        DataContext = new CatalogarItemViewModel(Itens, UsuarioLogado, AuditoriaVM)
+                    },
+                    "Auditoria" when PodeAuditoria => new Auditoria { DataContext = AuditoriaVM },
                     "Usuarios" when PodeGerenciarUsuarios => new Usuarios(),
                     "Sobre" => new SobreWindow(),
                     "Login" => new Login(),
                     _ => null
                 };
 
-                if (janela == null)
-                {
-                    MessageBox.Show("Acesso negado para essa funcionalidade.");
-                    return;
-                }
-
-                janela.Show();
+                janela?.Show();
             }
         }
 
@@ -172,8 +145,9 @@ namespace patrimonio_digital.MVVM.ViewModel
         {
             if (parameter is Window janela)
                 janela.Close();
-
         }
+
+
         private void ExcluirItem(object parameter)
         {
             if (!PodeExcluir)
@@ -195,7 +169,7 @@ namespace patrimonio_digital.MVVM.ViewModel
                 {
                     Itens.Remove(item);
 
-                    AuditoriaService.RegistrarAuditoria(new AuditoriaModel
+                    AuditoriaVM.RegistrarAuditoria(new AuditoriaModel
                     {
                         DataHora = DateTime.Now,
                         Usuario = UsuarioLogado,
@@ -212,31 +186,23 @@ namespace patrimonio_digital.MVVM.ViewModel
             {
                 var janela = new CatalogarItemWindow
                 {
-                    DataContext = new CatalogarItemViewModel(Itens, UsuarioLogado, item)
+                    DataContext = new CatalogarItemViewModel(Itens, UsuarioLogado, AuditoriaVM, item)
                 };
 
                 janela.ShowDialog();
-
-                AuditoriaService.RegistrarAuditoria(new AuditoriaModel
-                {
-                    DataHora = DateTime.Now,
-                    Usuario = UsuarioLogado,
-                    Acao = "Edição de Item",
-                    Item = item.Nome,
-                });
             }
-
-
         }
 
         private void AbrirEditor(object parameter)
         {
+            
             if (parameter is Item item)
             {
                 if (PodeEditar)
                 {
                     var editor = new EditorDocumentoView(item);
                     editor.ShowDialog();
+
                 }
                 else
                 {
@@ -247,28 +213,17 @@ namespace patrimonio_digital.MVVM.ViewModel
             }
         }
 
-        public void Logout(object obj)
+        public void Logout(object? obj)
         {
-            var main = Application.Current.MainWindow;
-            main.Hide();
+            foreach (Window w in Application.Current.Windows.Cast<Window>().ToList())
+                w.Close();
 
-            var login = new Login();
-            bool? result = login.ShowDialog();
-
-            if (result == true)
-            {
-                ((App)Application.Current).IniciarApp();
-            }
-            else
-            {
-                Application.Current.Shutdown();
-            }
+            ((App)Application.Current).IniciarApp();
         }
-
         public void OnClose()
         {
             ItemStorage.Salvar(Itens);
-            AuditoriaService.SalvarAuditoria();
+            AuditoriaVM.SalvarAuditoria();
         }
     }
 }

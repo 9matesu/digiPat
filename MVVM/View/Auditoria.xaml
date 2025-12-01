@@ -42,6 +42,8 @@
                   Height="370"
                   Background="{DynamicResource SidebarBackgroundBrush}"
                   IsReadOnly="True"
+                      Focusable="False"
+                      
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
                   CanUserReorderColumns="False"

@@ -1,6 +1,6 @@
 ﻿using patrimonio_digital.MVVM.Model;
 using patrimonio_digital.MVVM.View;
-using patrimonio_digital.Services;
+using patrimonio_digital.MVVM.ViewModel;
 using System.Windows;
 
 namespace patrimonio_digital
@@ -9,15 +9,16 @@ namespace patrimonio_digital
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            AuditoriaService.CarregarAuditoria();
+            var auditoriaVM = new AuditoriaViewModel();
+            auditoriaVM.CarregarAuditoria();
             IniciarApp();
 
         }
-       
+
         public void IniciarApp()
         {
-
             var loginWindow = new Login();
+            MainWindow = loginWindow; // DEFINA ANTES
             bool? result = loginWindow.ShowDialog();
 
             if (result == true)

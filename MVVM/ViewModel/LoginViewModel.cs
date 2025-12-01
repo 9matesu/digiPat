@@ -1,7 +1,6 @@
 using patrimonio_digital.Core;
 using patrimonio_digital.MVVM.Model;
 using patrimonio_digital.MVVM.View;
-using patrimonio_digital.Services;
 using System.Windows;
 using System.Windows.Input;
 

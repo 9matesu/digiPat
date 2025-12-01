@@ -190,10 +190,13 @@
                                                   Content="{TemplateBinding SelectionBoxItem}"/>
 
                                 <ToggleButton x:Name="PART_Button"
-                                              Width="32"
-                                              Background="Transparent"
-                                              BorderThickness="0"
-                                              IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}">
+                                           Width="36"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Stretch"
+                                           Focusable="False"
+                                           Background="Transparent"
+                                           BorderThickness="0"
+                                           IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}">
                                     <ToggleButton.Template>
                                         <ControlTemplate TargetType="ToggleButton">
                                             <Grid>

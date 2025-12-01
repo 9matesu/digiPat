@@ -1,4 +1,4 @@
-﻿using patrimonio_digital.Services;
+﻿using patrimonio_digital.MVVM.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +20,14 @@ namespace patrimonio_digital.MVVM.View
     /// </summary>
     public partial class Auditoria : Window
     {
+        public AuditoriaViewModel AuditoriaVM { get; }
+
         public Auditoria()
         {
             InitializeComponent();
-            AuditoriaService.CarregarAuditoria();
+            AuditoriaVM = new AuditoriaViewModel();
+            DataContext = AuditoriaVM;
+            AuditoriaVM.CarregarAuditoria();
         }
     }
 }

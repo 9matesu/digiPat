@@ -19,7 +19,7 @@ public class AuthService
     {
         LoadUsersFromJson(UsersFilePath);
 
-        // Cria usuário admin padrão se lista estiver vazia
+        // cria usuário admin padrão se lista estiver vazia
         if (!_users.Any())
         {
             Register("admin", "admin", TipoUsuario.Administrador);
@@ -121,7 +121,6 @@ public class AuthService
         if (usuarioAntigo == null)
             return false;
 
-        // Verifica se já existe outro usuário com o novo nome
         if (!_users
             .Where(u => u != usuarioAntigo)
             .Any(u => u.Nome.Equals(novoNome, StringComparison.OrdinalIgnoreCase)))
@@ -139,4 +138,4 @@ public class AuthService
         }
         return false; // nome duplicado
     }
-}
+   }

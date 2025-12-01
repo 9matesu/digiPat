@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="patrimonio_digital.MainWindow">
+    <Position X="33" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIIAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.ViewModel.MainViewModel">
+    <Position X="38.25" Y="17" Width="2.75" />
+    <AssociationLine Name="AbrirJanelaCommand" Type="System.Windows.Input.ICommand">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.161" Y="0.12" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="FecharJanelaCommand" Type="System.Windows.Input.ICommand">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.17" Y="-1.747" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AYrAIAAAAAAAEAAADACAABIAEAAAAAQgAIIQKAABBKA=</HashCode>
+      <FileName>MVVM\ViewModel\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_usuarioLogado" />
+      <Property Name="UsuarioLogadoBool" />
+      <Property Name="LogoutCommand" />
+      <Property Name="AbrirJanelaCommand" />
+      <Property Name="FecharJanelaCommand" />
+      <Property Name="AbrirEditorCommand" />
+      <Property Name="Itens" />
+      <Property Name="ExcluirItemCommand" />
+      <Property Name="EditarItemCommand" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.Model.AuditoriaModel">
+    <Position X="47.25" Y="24.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAEAAAAAAAAAACEAAAAAAA=</HashCode>
+      <FileName>MVVM\Model\Auditoria.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.Model.Documento">
+    <Position X="46.75" Y="22.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\Model\Documento.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Item" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.Model.Item">
+    <Position X="46.5" Y="17.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAgAIAIABAAgAAAAAQAAAAAACAABABAAkAAAAgEBAEQ=</HashCode>
+      <FileName>MVVM\Model\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.Model.Pagina">
+    <Position X="47.5" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAA=</HashCode>
+      <FileName>MVVM\Model\Pagina.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.Model.Usuario">
+    <Position X="44.25" Y="17.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAEAAAQ=</HashCode>
+      <FileName>MVVM\Model\Usuario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Tipo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.ViewModel.AuditoriaViewModel">
+    <Position X="31" Y="24.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAEAAAAAAAAAAAAAACAAhAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\AuditoriaViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Registros" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.ViewModel.CadastroUsuarioViewModel">
+    <Position X="31" Y="20.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAACAIAIIADABCAAAAAIAAAAAAEAAIA=</HashCode>
+      <FileName>MVVM\ViewModel\CadastroUsuarioViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="tipoSelecionado" />
+      <Field Name="authService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.ViewModel.CatalogarItemViewModel">
+    <Position X="34.75" Y="17" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAIAAUEAkEAIEAQAACAEBBAEAABIAAAgAAACAAAAEUQ=</HashCode>
+      <FileName>MVVM\ViewModel\CatalogarItemViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Itens" />
+      <Property Name="RegistrarCommand" />
+      <Property Name="FecharCommand" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.ViewModel.DocumentoViewModel" BaseTypeListCollapsed="true">
+    <Position X="24.25" Y="15.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAABAAAAAACAIAAAAAQAgAIoBAAAAAAEAAAAEAA=</HashCode>
+      <FileName>MVVM\ViewModel\DocumentoViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="paginaAtual" />
+      <Field Name="documento" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.ViewModel.ListaUsuariosViewModel">
+    <Position X="31.5" Y="17" Width="3" />
+    <InheritanceLine Type="patrimonio_digital.Core.ObservableObject" ManuallyRouted="true">
+      <Path>
+        <Point X="30.5" Y="14.812" />
+        <Point X="30.5" Y="16.209" />
+        <Point X="31.93" Y="16.209" Type="JumpStart" />
+        <Point X="32.097" Y="16.209" Type="JumpEnd" />
+        <Point X="32.424" Y="16.209" Type="JumpStart" />
+        <Point X="32.59" Y="16.209" Type="JumpEnd" />
+        <Point X="32.667" Y="16.209" Type="JumpStart" />
+        <Point X="32.833" Y="16.209" Type="JumpEnd" />
+        <Point X="33" Y="16.209" />
+        <Point X="33" Y="17" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAICAAAUAAAAAEAIAAAQAAAAAoAgAAACAAAAAgA=</HashCode>
+      <FileName>MVVM\ViewModel\ListaUsuariosViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="authService" />
+      <Property Name="UsuarioSelecionado" />
+      <Property Name="AbrirCadastroCommand" />
+      <Property Name="EditarUsuarioCommand" />
+      <Property Name="ExcluirUsuarioCommand" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.ViewModel.LoginViewModel">
+    <Position X="28" Y="17" Width="2.25" />
+    <InheritanceLine Type="patrimonio_digital.Core.ObservableObject" FixedFromPoint="true">
+      <Path>
+        <Point X="29.75" Y="14.562" />
+        <Point X="28.875" Y="14.562" />
+        <Point X="28.875" Y="17" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAABAAAAAAAAAIIAAAACAAAAAIAAAQAAEAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\LoginViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EntrarCommand" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.ViewModel.PaginaViewModel" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="20.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAgAAAAFAAA=</HashCode>
+      <FileName>MVVM\ViewModel\PaginaViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Model" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.ViewModel.SobreWindowViewModel">
+    <Position X="28.75" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\SobreWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.ViewModel.VisualizadorDocumentoViewModel" BaseTypeListCollapsed="true">
+    <Position X="26.75" Y="20.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAABAAAAAAGAIAAAAAQAgAIoBAAAAAAAAAAAEAA=</HashCode>
+      <FileName>MVVM\ViewModel\VisualizadorDocumentoViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PaginaAtual" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.View.Auditoria" BaseTypeListCollapsed="true">
+    <Position X="33" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\View\Auditoria.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AuditoriaVM" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.View.CadastroUsuarioWindow" BaseTypeListCollapsed="true">
+    <Position X="29.5" Y="9.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>MVVM\View\CadastroUsuarioWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.View.CatalogarItemWindow" BaseTypeListCollapsed="true">
+    <Position X="33" Y="10.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\View\CatalogarItemWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.View.EditorDocumentoView" BaseTypeListCollapsed="true">
+    <Position X="29.5" Y="7.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\View\EditorDocumentoView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.View.Login" BaseTypeListCollapsed="true">
+    <Position X="33" Y="6" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\View\Login.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.View.SobreWindow" BaseTypeListCollapsed="true">
+    <Position X="29.5" Y="11.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>MVVM\View\SobreWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.View.Usuarios" BaseTypeListCollapsed="true">
+    <Position X="29.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\View\UsuariosWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="patrimonio_digital.MVVM.View.VisualizadorDocumentoView" BaseTypeListCollapsed="true">
+    <Position X="29.5" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>MVVM\View\VisualizadorDocumentoView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="patrimonio_digital.Core.ObservableObject" Collapsed="true">
+    <Position X="29.75" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\ObservableObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Collections.ObjectModel.ObservableCollection&lt;T&gt;" Collapsed="true">
+    <Position X="39.25" Y="25.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AuthService" Collapsed="true">
+    <Position X="37" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAAEAAgAAAgCAAAAAAABAIAgAQAQAAEAAAA=</HashCode>
+      <FileName>Services\AuthService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="System.Windows.Input.ICommand">
+    <Position X="35.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="patrimonio_digital.MVVM.Model.TipoUsuario">
+    <Position X="44.25" Y="19.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>MVVM\Model\Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
