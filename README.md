@@ -2,7 +2,7 @@
 
 ## Descrição
 **digiPat** é um **Sistema de Gestão de Documentos** sendo desenvolvido em C# e voltado para a catalogação, organização e controle de itens. 
-O projeto é parte da curricularização do curso de Análise e Desenvolvimento de Sistemas pela FATEC Cruzeiro, focando em conceitos de **orientação a objetos**, **interfaces gráficas** e **persistência simples** sem o uso de banco de dados.
+O projeto é parte da curricularização do curso de Análise e Desenvolvimento de Sistemas pela FATEC Cruzeiro, focando em estudos de **orientação a objetos**, **interfaces gráficas** e **persistência simples** sem o uso de banco de dados (conforme especificações acadêmicas).
 
 ## Funcionalidades
 - Cadastro de itens no sistema inclui:
@@ -16,8 +16,10 @@ O projeto é parte da curricularização do curso de Análise e Desenvolvimento 
   - Conteúdo do item
 - Listagem de todos os itens cadastrados
 - Edição e remoção de itens
+- Cadastro, edição e remoção de usuários
 - Armazenamento em memória e arquivo local
 - Autenticação e Autorização
+- Auditoria
 
 ## Como Executar
 1. Clone este repositório:
